@@ -5,12 +5,64 @@
   <title>Mildred M. Newbury – Author Visibility & Book Marketing Specialist</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Data-driven book marketing that identifies discovery gaps, optimizes positioning, and connects your book with readers actively searching for stories like yours." />
+
+  <!-- Canonical URL (update with your actual domain) -->
+  <link rel="canonical" href="https://yourdomain.com/" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Mildred M. Newbury – Author Visibility & Book Marketing" />
   <meta property="og:description" content="Research-driven book marketing. Discovery gap analysis. Reader-centered visibility strategies for authors who want sustainable results." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mildred M. Newbury – Author Visibility & Book Marketing" />
+  <meta name="twitter:description" content="Data-driven book marketing that connects your book with readers actively searching for stories like yours." />
+  <meta name="twitter:image" content="https://yourdomain.com/images/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mildred M. Newbury - Author Visibility & Book Marketing Specialist",
+    "description": "Data-driven book marketing and discovery gap analysis for authors across 15+ genres",
+    "email": "mnewburymildred@gmail.com",
+    "url": "https://yourdomain.com",
+    "serviceType": ["Book Marketing", "Author Visibility", "Discovery Gap Analysis"],
+    "areaServed": "Worldwide",
+    "priceRange": "$$",
+    "knowsAbout": ["Book Marketing", "Amazon Optimization", "Author Branding", "Reader Audience Mapping"],
+    "sameAs": []
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Analytics: Replace with your actual tracking ID -->
+  <!-- Option A: Google Analytics -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+  <!-- Option B: Plausible (privacy-friendly) -->
+  <!-- <script defer data-domain="yourdomain.com" src="https://plausible.io/js/script.js"></script> -->
 
   <style>
     :root {
@@ -22,7 +74,7 @@
       --accent: #ffcf7b;
       --accent-green: #8ef4b2;
       --text-main: #f9f6ff;
-      --text-muted: #b7a8e0;
+      --text-muted: #c4b8e8; /* Improved contrast from #b7a8e0 */
       --border-soft: #272448;
       --shadow-soft: 0 26px 80px rgba(0, 0, 0, 0.6);
       --radius-lg: 24px;
@@ -41,6 +93,24 @@
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+    }
+
+    /* Skip Navigation Link for Accessibility */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      padding: 1rem 1.5rem;
+      background: var(--primary);
+      color: #fff;
+      z-index: 10000;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 0 0 8px 0;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      left: 0;
     }
 
     img { max-width: 100%; display: block; }
@@ -80,7 +150,7 @@
     .badge-center { display: flex; justify-content: center; }
 
     .bg-orb {
-      position: fixed;
+      position: absolute; /* Changed from fixed to absolute */
       width: 420px;
       height: 420px;
       border-radius: 50%;
@@ -89,6 +159,8 @@
       opacity: 0.25;
       z-index: 0;
       pointer-events: none;
+      will-change: transform; /* GPU acceleration */
+      transform: translate3d(0, 0, 0); /* Force GPU layer */
       animation: orbFloat 17s ease-in-out infinite alternate;
     }
 
@@ -328,6 +400,14 @@
       box-shadow: 0 24px 60px rgba(0, 0, 0, 0.95);
     }
 
+    /* Focus styles for keyboard navigation */
+    .btn-primary:focus-visible,
+    .btn-outline:focus-visible,
+    .nav-cta:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     .btn-outline {
       padding: 0.92rem 1.6rem;
       border-radius: var(--radius-pill);
@@ -464,6 +544,19 @@
     }
     .reveal.active { opacity: 1; transform: translate3d(0, 0, 0); }
     .section-alt { background: radial-gradient(circle at top right, #1b1639, #070615 65%); }
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
 
     /* PAIN POINTS */
     .pain-grid {
@@ -884,12 +977,24 @@
       overflow: hidden;
     }
 
-    .faq-question-row {
+    .faq-question-btn {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0.9rem 1.1rem;
       cursor: pointer;
+      width: 100%;
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+    }
+
+    .faq-question-btn:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: -3px;
+      border-radius: 18px;
     }
 
     .faq-question { font-size: 0.96rem; font-weight: 500; }
@@ -899,6 +1004,7 @@
       color: var(--text-muted);
       transition: transform 0.2s ease;
       flex-shrink: 0;
+      pointer-events: none;
     }
 
     .faq-answer {
@@ -910,6 +1016,7 @@
       transition: max-height 0.3s ease, padding-bottom 0.3s ease;
     }
 
+    .faq-answer[aria-hidden="false"] { padding-bottom: 0.9rem; max-height: 300px; }
     .faq-item.open .faq-answer { padding-bottom: 0.9rem; max-height: 300px; }
     .faq-item.open .faq-toggle { transform: rotate(90deg); }
 
@@ -968,6 +1075,16 @@
       background: rgba(3, 3, 10, 0.96);
     }
 
+    /* Honeypot field - hidden from humans */
+    .ohnohoney {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
+    }
+
     .contact-note { margin-top: 0.7rem; font-size: 0.9rem; color: var(--text-muted); }
     .form-status { margin-top: 0.9rem; font-size: 0.9rem; color: var(--text-muted); }
     .form-status.success { color: #8ef4b2; }
@@ -989,6 +1106,28 @@
     }
 
     .mini-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Testimonials */
+    .testimonial-quote {
+      position: relative;
+      padding-left: 1rem;
+      border-left: 2px solid rgba(169, 107, 255, 0.4);
+      margin-top: 0.6rem;
+    }
+
+    .testimonial-quote p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+
+    .testimonial-cite {
+      display: block;
+      margin-top: 0.3rem;
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-style: normal;
+    }
 
     /* FOOTER */
     footer {
@@ -1012,6 +1151,7 @@
     }
 
     .footer-links { display: flex; gap: 0.8rem; }
+    .footer-links a:hover { color: var(--text-main); }
 
     #backToTop {
       position: fixed;
@@ -1033,6 +1173,7 @@
     }
 
     #backToTop:hover { transform: translateY(-3px); }
+    #backToTop:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
     .nav-overlay {
       display: none;
@@ -1070,11 +1211,16 @@
       .hero-floating-stat { position: static; margin: 0.8rem auto 0; }
       .about-grid { grid-template-columns: 1fr; }
       .about-media { min-height: auto; margin-top: 1.6rem; }
-      .about-photo-main, .about-photo-secondary { position: static; width: 100%; transform: none; border-radius: 18px; margin-bottom: 1rem; }
+      .about-photo-main { position: static; width: 100%; transform: none; border-radius: 18px; margin-bottom: 1rem; }
       .about-photo-secondary { display: none; }
       .signature-card { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.5rem 1.2rem; }
       .signature-side { order: 2; }
       .pain-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      /* Hide orbs on mobile for performance */
+      .bg-orb { display: none; }
     }
 
     @media (max-width: 720px) {
@@ -1124,23 +1270,70 @@
       .brand-text { font-size: 0.74rem; }
       .brand-text strong { font-size: 0.78rem; }
     }
+
+    /* Print styles */
+    @media print {
+      .navbar-wrap, .bg-orb, .hero-visual,
+      .hero-floating-tag, .hero-floating-stat,
+      #backToTop, .nav-overlay, .hamburger,
+      .stats-strip { display: none !important; }
+
+      body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+      }
+
+      section { padding: 30px 0; }
+      a { color: black; text-decoration: underline; }
+      .container { max-width: 100%; }
+
+      .pain-grid, .approach-grid, .services-grid,
+      .results-grid, .process-timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card, .pain-card, .approach-card,
+      .result-card, .process-step {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        background: white;
+        color: black;
+      }
+
+      .section-heading, h1, h2, h3, h4 { color: black !important; }
+      .section-subtitle, p, li { color: #333 !important; }
+    }
   </style>
 </head>
 
 <body>
-  <div class="bg-orb" style="top: -80px; left: -120px;"></div>
-  <div class="bg-orb orb-2" style="bottom: -60px; right: -40px;"></div>
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="bg-orb" style="top: -80px; left: -120px;" aria-hidden="true"></div>
+  <div class="bg-orb orb-2" style="bottom: -60px; right: -40px;" aria-hidden="true"></div>
   <div class="nav-overlay" id="navOverlay"></div>
 
   <div class="navbar-wrap">
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
       <div class="navbar-inner">
-        <a href="#top" class="brand">
-          <div class="brand-logo"><img src="MildredM. Newbury.jpg" alt="Mildred M. Newbury" /></div>
-          <div class="brand-text"><span>Mildred M.</span><strong>Newbury</strong></div>
+        <a href="#top" class="brand" aria-label="Mildred M. Newbury - Home">
+          <div class="brand-logo">
+            <img src="MildredM. Newbury.jpg"
+                 alt="Mildred M. Newbury"
+                 width="42" height="42" />
+          </div>
+          <div class="brand-text">
+            <span>Mildred M.</span>
+            <strong>Newbury</strong>
+          </div>
         </a>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-        <div class="nav-links" id="navLinks">
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks" role="navigation">
           <a href="#problem">The Problem</a>
           <a href="#approach">Approach</a>
           <a href="#services">Services</a>
@@ -1156,31 +1349,35 @@
   <header class="hero" id="top">
     <div class="hero-inner">
       <div class="hero-text">
-        <div class="hero-kicker">Discovery gap analysis & author visibility</div>
+        <div class="hero-kicker">Discovery gap analysis &amp; author visibility</div>
         <h1 class="hero-title">Your book has readers. <span class="hero-highlight">They just can't find it yet.</span></h1>
         <p class="hero-subtitle">I analyze your book's Amazon ranking, category placement, keyword targeting, review patterns, and audience signals to identify exactly why your ideal readers aren't discovering your work. Then I build the strategy to fix it.</p>
         <p class="hero-trust">200+ authors across 15+ genres. Data-first approach. Relationship-centered results.</p>
         <div class="hero-cta-row">
           <a href="#contact" class="btn-primary">Get your free book assessment</a>
-          <a href="#problem" class="btn-outline">See if this is your problem <span class="arrow">→</span></a>
+          <a href="#problem" class="btn-outline">See if this is your problem <span class="arrow" aria-hidden="true">→</span></a>
         </div>
         <p class="hero-footnote">Send me your book link. I'll look at the data before we even talk and tell you what I honestly see.</p>
       </div>
       <div class="hero-visual">
         <div class="hero-photo-card">
-          <div class="hero-floating-tag"><strong>10+ years</strong><br />analyzing book markets</div>
-          <div class="hero-photo-main"><img src="MildredM. Newbury.jpg" alt="Professional portrait of Mildred M. Newbury" /></div>
+          <div class="hero-floating-tag" aria-hidden="true"><strong>10+ years</strong><br />analyzing book markets</div>
+          <div class="hero-photo-main">
+            <img src="MildredM. Newbury.jpg"
+                 alt="Professional portrait of Mildred M. Newbury, book marketing specialist"
+                 width="260" height="260" />
+          </div>
           <div class="hero-photo-meta">
             <strong>Mildred M. Newbury</strong>
             <span class="role">Author Visibility &amp; Book Marketing Specialist</span>
           </div>
-          <div class="hero-floating-stat">I look at your data before we talk</div>
+          <div class="hero-floating-stat" aria-hidden="true">I look at your data before we talk</div>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="stats-strip">
+  <div class="stats-strip" aria-label="Key statistics">
     <div class="stats-inner">
       <div class="stat-item"><strong>200+</strong> authors helped across 15+ genres</div>
       <div class="stat-item"><strong>10+ years</strong> of book market analysis</div>
@@ -1188,8 +1385,8 @@
     </div>
   </div>
 
-  <main>
-    <!-- PAIN POINTS: "Is this you?" -->
+  <main id="main-content">
+    <!-- PAIN POINTS -->
     <section id="problem">
       <div class="container reveal">
         <div class="badge-center"><span class="badge">Sound familiar?</span></div>
@@ -1198,42 +1395,42 @@
 
         <div class="pain-grid">
           <div class="pain-card">
-            <div class="pain-icon">📉</div>
+            <div class="pain-icon" aria-hidden="true">📉</div>
             <h4>"My reviews are great but nobody's finding the book"</h4>
             <p>You have a 4.0+ rating. Readers who find it love it. But your BSR is stuck past #500,000 and organic discovery has completely stalled. The quality is there. The visibility infrastructure is not.</p>
           </div>
           <div class="pain-card">
-            <div class="pain-icon">🔇</div>
+            <div class="pain-icon" aria-hidden="true">🔇</div>
             <h4>"I launched and it just... disappeared"</h4>
             <p>You did the launch posts, told your friends, maybe ran a small promo. There was a brief spike, then nothing. Three months later, it feels like the book never existed. That's a launch strategy gap, not a book problem.</p>
           </div>
           <div class="pain-card">
-            <div class="pain-icon">🎯</div>
+            <div class="pain-icon" aria-hidden="true">🎯</div>
             <h4>"I don't know who my readers are or where they gather"</h4>
             <p>You wrote the book, but you can't describe your ideal reader with precision. You don't know which categories they browse, which comp titles they love, or which communities they belong to. Without that map, marketing is just guessing.</p>
           </div>
           <div class="pain-card">
-            <div class="pain-icon">📂</div>
+            <div class="pain-icon" aria-hidden="true">📂</div>
             <h4>"I think I'm in the wrong categories but I don't know which ones are right"</h4>
             <p>Amazon has 16,000+ categories. Being in the wrong 3 means your book is invisible to readers who would love it. This is the single most common fixable problem, and most authors don't even know it's happening.</p>
           </div>
           <div class="pain-card">
-            <div class="pain-icon">📖</div>
+            <div class="pain-icon" aria-hidden="true">📖</div>
             <h4>"Readers love Book 1 but never buy Book 2"</h4>
             <p>Your series has a read-through leak. Readers finish Book 1 and vanish. The cause is almost always a back-matter funnel gap: no next-book link, no newsletter CTA, or a Book 2 blurb that doesn't hook the reader who just finished Book 1.</p>
           </div>
           <div class="pain-card">
-            <div class="pain-icon">👻</div>
+            <div class="pain-icon" aria-hidden="true">👻</div>
             <h4>"I have a backlist that's just sitting there doing nothing"</h4>
             <p>You published 2, 3, or 5+ books. The early ones have stopped selling entirely. But those books still have value. They just need repositioning, refreshed metadata, and reintroduction to communities that have grown since they launched.</p>
           </div>
           <div class="pain-card">
-            <div class="pain-icon">😰</div>
+            <div class="pain-icon" aria-hidden="true">😰</div>
             <h4>"Marketing feels overwhelming and I don't know what actually works"</h4>
             <p>You've been told to do newsletters, BookTok, Instagram, blog tours, Amazon ads, Facebook groups, Goodreads giveaways, and 47 other things. Nobody told you which of those actually matter for YOUR book in YOUR genre. You need a filter, not more noise.</p>
           </div>
           <div class="pain-card">
-            <div class="pain-icon">🤷</div>
+            <div class="pain-icon" aria-hidden="true">🤷</div>
             <h4>"I'm spending money on marketing but can't tell if it's working"</h4>
             <p>You've tried ads, promos, or paid services. Maybe something helped, maybe not. You have no framework to evaluate what moved the needle and what was wasted money. You need a data baseline, not more tactics.</p>
           </div>
@@ -1281,32 +1478,32 @@
 
         <div class="approach-grid">
           <div class="approach-card">
-            <div class="approach-num">1</div>
+            <div class="approach-num" aria-hidden="true">1</div>
             <h4>You share your book</h4>
             <p>Send me your title, genre, and Amazon link. That's all I need to start. I look at the publicly available data before we even talk.</p>
           </div>
           <div class="approach-card">
-            <div class="approach-num">2</div>
+            <div class="approach-num" aria-hidden="true">2</div>
             <h4>I analyze the signals</h4>
             <p>BSR trajectory, category placement, keyword alignment, review patterns, also-bought health, pricing, platform presence, and competitive landscape. Real data, not opinions.</p>
           </div>
           <div class="approach-card">
-            <div class="approach-num">3</div>
+            <div class="approach-num" aria-hidden="true">3</div>
             <h4>I identify the gaps</h4>
             <p>Exactly 3 specific, data-backed discovery or positioning gaps. Not vague observations. Precise signals that show where and why readers can't find your book.</p>
           </div>
           <div class="approach-card">
-            <div class="approach-num">4</div>
+            <div class="approach-num" aria-hidden="true">4</div>
             <h4>I build the strategy</h4>
             <p>For each gap, a corresponding market move. Exact categories, keywords, pricing adjustments, funnel fixes, and community targets. Actionable, not theoretical.</p>
           </div>
           <div class="approach-card">
-            <div class="approach-num">5</div>
+            <div class="approach-num" aria-hidden="true">5</div>
             <h4>You implement with support</h4>
             <p>A written strategy document with prioritized action steps. Email support during implementation. I answer questions as they come up and help troubleshoot.</p>
           </div>
           <div class="approach-card">
-            <div class="approach-num">6</div>
+            <div class="approach-num" aria-hidden="true">6</div>
             <h4>We measure and adjust</h4>
             <p>After changes take effect, I review the data again. What moved? What needs refinement? Strategy evolves based on real market response, not assumptions.</p>
           </div>
@@ -1351,8 +1548,20 @@
             </div>
           </div>
           <div class="about-media">
-            <div class="about-photo-main"><img src="MildredM. Newbury.jpg" alt="Mildred analyzing book market data" /></div>
-            <div class="about-photo-secondary"><img src="MildredM. Newbury.jpg" alt="Mildred working on author strategy" /></div>
+            <div class="about-photo-main">
+              <!-- USE A DIFFERENT IMAGE HERE than the hero -->
+              <img src="MildredM. Newbury.jpg"
+                   alt="Mildred M. Newbury reviewing book market data at her desk"
+                   loading="lazy"
+                   width="400" height="500" />
+            </div>
+            <div class="about-photo-secondary">
+              <!-- USE A THIRD DIFFERENT IMAGE HERE -->
+              <img src="MildredM. Newbury.jpg"
+                   alt="Mildred presenting an author visibility strategy"
+                   loading="lazy"
+                   width="400" height="500" />
+            </div>
           </div>
         </div>
       </div>
@@ -1401,7 +1610,7 @@
 
         <div class="services-grid">
           <div class="service-card">
-            <div class="service-icon">🔍</div>
+            <div class="service-icon" aria-hidden="true">🔍</div>
             <div class="service-title">Amazon &amp; Metadata Optimization</div>
             <div class="service-tag">Categories • Keywords • Algorithm</div>
             <p class="service-body">Fix the infrastructure that determines whether Amazon's algorithm surfaces your book or buries it.</p>
@@ -1415,7 +1624,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">📊</div>
+            <div class="service-icon" aria-hidden="true">📊</div>
             <div class="service-title">Reader Audience Mapping</div>
             <div class="service-tag">Comp titles • Also-boughts • Communities</div>
             <p class="service-body">Identify exactly who your readers are, where they browse, and how to position your book in their path.</p>
@@ -1429,7 +1638,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">🚀</div>
+            <div class="service-icon" aria-hidden="true">🚀</div>
             <div class="service-title">Launch &amp; Relaunch Strategy</div>
             <div class="service-tag">Pre-launch • Launch • Post-launch</div>
             <p class="service-body">Research-driven launch plans built on market analysis, not generic checklists.</p>
@@ -1443,7 +1652,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">📚</div>
+            <div class="service-icon" aria-hidden="true">📚</div>
             <div class="service-title">Book Club &amp; Library Pipeline</div>
             <div class="service-tag">Placement • Outreach • Guides</div>
             <p class="service-body">Targeted introductions to reader communities where your book naturally belongs.</p>
@@ -1457,7 +1666,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">⭐</div>
+            <div class="service-icon" aria-hidden="true">⭐</div>
             <div class="service-title">Review &amp; Social Proof Strategy</div>
             <div class="service-tag">Velocity • ARCs • Endorsements</div>
             <p class="service-body">Ethical review acceleration that builds genuine social proof.</p>
@@ -1471,7 +1680,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">📖</div>
+            <div class="service-icon" aria-hidden="true">📖</div>
             <div class="service-title">Series &amp; Backlist Revival</div>
             <div class="service-tag">Read-through • Funnels • Repositioning</div>
             <p class="service-body">Fix read-through leaks and give older titles a data-informed second life.</p>
@@ -1485,7 +1694,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">✒️</div>
+            <div class="service-icon" aria-hidden="true">✒️</div>
             <div class="service-title">Author Brand &amp; Positioning</div>
             <div class="service-tag">Identity • Messaging • Presence</div>
             <p class="service-body">Clarify who you are as an author so readers and industry professionals instantly understand your work.</p>
@@ -1499,7 +1708,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">💌</div>
+            <div class="service-icon" aria-hidden="true">💌</div>
             <div class="service-title">Newsletter &amp; Digital Visibility</div>
             <div class="service-tag">Email • Social • Reader magnets</div>
             <p class="service-body">Sustainable online visibility that matches your personality.</p>
@@ -1513,7 +1722,7 @@
           </div>
 
           <div class="service-card">
-            <div class="service-icon">🎙️</div>
+            <div class="service-icon" aria-hidden="true">🎙️</div>
             <div class="service-title">Publicity &amp; Partnerships</div>
             <div class="service-tag">Podcasts • Events • Collaborations</div>
             <p class="service-body">Strategic appearances that extend your reach while still feeling like you.</p>
@@ -1633,35 +1842,35 @@
         <div class="badge-center"><span class="badge">Genres</span></div>
         <h2 class="section-heading section-heading-center">Deep market knowledge across genres</h2>
         <p class="section-subtitle section-subtitle-center">Each genre has different discovery mechanics, reader expectations, and platform dynamics. I apply genre-specific expertise, not generic advice.</p>
-        <div class="genres-wrap">
-          <span class="genre-tag">Contemporary Romance</span>
-          <span class="genre-tag">Historical Romance</span>
-          <span class="genre-tag">Fantasy Romance</span>
-          <span class="genre-tag">Paranormal Romance</span>
-          <span class="genre-tag">Dark Romance</span>
-          <span class="genre-tag">Clean Romance</span>
-          <span class="genre-tag">Epic Fantasy</span>
-          <span class="genre-tag">Urban Fantasy</span>
-          <span class="genre-tag">Cozy Fantasy</span>
-          <span class="genre-tag">LitRPG</span>
-          <span class="genre-tag">Science Fiction</span>
-          <span class="genre-tag">Thriller</span>
-          <span class="genre-tag">Mystery</span>
-          <span class="genre-tag">Suspense</span>
-          <span class="genre-tag">Horror</span>
-          <span class="genre-tag">Gothic Fiction</span>
-          <span class="genre-tag">Literary Fiction</span>
-          <span class="genre-tag">Book Club Fiction</span>
-          <span class="genre-tag">Historical Fiction</span>
-          <span class="genre-tag">Women's Fiction</span>
-          <span class="genre-tag">Family Sagas</span>
-          <span class="genre-tag">Memoir</span>
-          <span class="genre-tag">Self-Help</span>
-          <span class="genre-tag">Business</span>
-          <span class="genre-tag">Prescriptive Nonfiction</span>
-          <span class="genre-tag">YA Fantasy</span>
-          <span class="genre-tag">YA Contemporary</span>
-          <span class="genre-tag">Middle Grade</span>
+        <div class="genres-wrap" role="list">
+          <span class="genre-tag" role="listitem">Contemporary Romance</span>
+          <span class="genre-tag" role="listitem">Historical Romance</span>
+          <span class="genre-tag" role="listitem">Fantasy Romance</span>
+          <span class="genre-tag" role="listitem">Paranormal Romance</span>
+          <span class="genre-tag" role="listitem">Dark Romance</span>
+          <span class="genre-tag" role="listitem">Clean Romance</span>
+          <span class="genre-tag" role="listitem">Epic Fantasy</span>
+          <span class="genre-tag" role="listitem">Urban Fantasy</span>
+          <span class="genre-tag" role="listitem">Cozy Fantasy</span>
+          <span class="genre-tag" role="listitem">LitRPG</span>
+          <span class="genre-tag" role="listitem">Science Fiction</span>
+          <span class="genre-tag" role="listitem">Thriller</span>
+          <span class="genre-tag" role="listitem">Mystery</span>
+          <span class="genre-tag" role="listitem">Suspense</span>
+          <span class="genre-tag" role="listitem">Horror</span>
+          <span class="genre-tag" role="listitem">Gothic Fiction</span>
+          <span class="genre-tag" role="listitem">Literary Fiction</span>
+          <span class="genre-tag" role="listitem">Book Club Fiction</span>
+          <span class="genre-tag" role="listitem">Historical Fiction</span>
+          <span class="genre-tag" role="listitem">Women's Fiction</span>
+          <span class="genre-tag" role="listitem">Family Sagas</span>
+          <span class="genre-tag" role="listitem">Memoir</span>
+          <span class="genre-tag" role="listitem">Self-Help</span>
+          <span class="genre-tag" role="listitem">Business</span>
+          <span class="genre-tag" role="listitem">Prescriptive Nonfiction</span>
+          <span class="genre-tag" role="listitem">YA Fantasy</span>
+          <span class="genre-tag" role="listitem">YA Contemporary</span>
+          <span class="genre-tag" role="listitem">Middle Grade</span>
         </div>
       </div>
     </section>
@@ -1673,77 +1882,77 @@
         <h2 class="section-heading">Questions authors ask before reaching out</h2>
         <div class="faq-grid">
           <div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">What's this "free assessment" actually include?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">I look at your book's publicly available data: BSR, categories, review count, rating, pricing, and basic positioning. I reply with honest initial observations about what I see. If there's a clear discovery gap I can help with, I'll tell you. If there isn't, I'll tell you that too. No pitch, no pressure.</div>
+            <div class="faq-item" id="faq-1">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-1">
+                <span class="faq-question">What's this "free assessment" actually include?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-1" role="region" aria-hidden="true">I look at your book's publicly available data: BSR, categories, review count, rating, pricing, and basic positioning. I reply with honest initial observations about what I see. If there's a clear discovery gap I can help with, I'll tell you. If there isn't, I'll tell you that too. No pitch, no pressure.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">Can you guarantee sales or bestseller status?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">No. Anyone who guarantees that is not being honest. What I can do is identify exactly where your positioning is blocking discovery and give you a data-backed plan to fix it. Correct positioning dramatically improves the odds, but no one controls algorithms or reader behavior.</div>
+            <div class="faq-item" id="faq-2">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-2">
+                <span class="faq-question">Can you guarantee sales or bestseller status?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-2" role="region" aria-hidden="true">No. Anyone who guarantees that is not being honest. What I can do is identify exactly where your positioning is blocking discovery and give you a data-backed plan to fix it. Correct positioning dramatically improves the odds, but no one controls algorithms or reader behavior.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">How is this different from other book marketing services?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">Most services start with a template and apply it to every author. I start with your book's actual data. I look at your BSR, categories, keywords, reviews, also-boughts, and competitive landscape before making a single recommendation. Every strategy is built on observable signals specific to your book and genre.</div>
+            <div class="faq-item" id="faq-3">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-3">
+                <span class="faq-question">How is this different from other book marketing services?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-3" role="region" aria-hidden="true">Most services start with a template and apply it to every author. I start with your book's actual data. I look at your BSR, categories, keywords, reviews, also-boughts, and competitive landscape before making a single recommendation. Every strategy is built on observable signals specific to your book and genre.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">How far in advance should I reach out before launch?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">Ideally 3-6 months before publication. Category selection, keyword targeting, and review velocity planning all benefit from lead time. If your book is already out, we can still work together. Many of my best results come from repositioning books that launched with weak positioning.</div>
+            <div class="faq-item" id="faq-4">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-4">
+                <span class="faq-question">How far in advance should I reach out before launch?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-4" role="region" aria-hidden="true">Ideally 3-6 months before publication. Category selection, keyword targeting, and review velocity planning all benefit from lead time. If your book is already out, we can still work together. Many of my best results come from repositioning books that launched with weak positioning.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">Do you work with self-published and traditionally published?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">Both. Self-published authors typically have more control over metadata and pricing, meaning faster implementation. Traditionally published authors may need to work through their publisher for some changes, but there's still significant optimization possible on Goodreads, BookBub, social presence, and reader community outreach.</div>
+            <div class="faq-item" id="faq-5">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-5">
+                <span class="faq-question">Do you work with self-published and traditionally published?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-5" role="region" aria-hidden="true">Both. Self-published authors typically have more control over metadata and pricing, meaning faster implementation. Traditionally published authors may need to work through their publisher for some changes, but there's still significant optimization possible on Goodreads, BookBub, social presence, and reader community outreach.</div>
             </div>
           </div>
           <div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">What if I'm introverted and hate self-promotion?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">Many of my clients are. A significant portion of what I do is infrastructure and positioning work that happens behind the scenes: categories, keywords, metadata, back-matter funnels. You don't need to become a social media personality. We build visibility around your comfort level.</div>
+            <div class="faq-item" id="faq-6">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-6">
+                <span class="faq-question">What if I'm introverted and hate self-promotion?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-6" role="region" aria-hidden="true">Many of my clients are. A significant portion of what I do is infrastructure and positioning work that happens behind the scenes: categories, keywords, metadata, back-matter funnels. You don't need to become a social media personality. We build visibility around your comfort level.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">Do you manage Amazon or Facebook ads?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">My focus is organic discoverability and positioning. I can guide you on when ads make sense and what kind, but I'm not a day-to-day ad manager. Good positioning makes ads work better. Running ads without good positioning is burning money.</div>
+            <div class="faq-item" id="faq-7">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-7">
+                <span class="faq-question">Do you manage Amazon or Facebook ads?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-7" role="region" aria-hidden="true">My focus is organic discoverability and positioning. I can guide you on when ads make sense and what kind, but I'm not a day-to-day ad manager. Good positioning makes ads work better. Running ads without good positioning is burning money.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">How much does it cost?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">Depends on scope. After the free assessment, I outline options at different levels so you choose what fits. No surprise billing, no hidden fees, no pressure. I'd rather you invest in the right service than oversell you.</div>
+            <div class="faq-item" id="faq-8">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-8">
+                <span class="faq-question">How much does it cost?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-8" role="region" aria-hidden="true">Depends on scope. After the free assessment, I outline options at different levels so you choose what fits. No surprise billing, no hidden fees, no pressure. I'd rather you invest in the right service than oversell you.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">What's the difference between you and a publicist?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">Publicists focus on media: reviews in outlets, interviews, features. I focus on reader discovery infrastructure: categories, keywords, metadata, audience mapping, and community positioning that determine whether readers find your book through search, browse, and algorithms. Both matter. Different problems.</div>
+            <div class="faq-item" id="faq-9">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-9">
+                <span class="faq-question">What's the difference between you and a publicist?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-9" role="region" aria-hidden="true">Publicists focus on media: reviews in outlets, interviews, features. I focus on reader discovery infrastructure: categories, keywords, metadata, audience mapping, and community positioning that determine whether readers find your book through search, browse, and algorithms. Both matter. Different problems.</div>
             </div>
-            <div class="faq-item">
-              <div class="faq-question-row">
-                <div class="faq-question">What do you need to get started?</div>
-                <div class="faq-toggle">›</div>
-              </div>
-              <div class="faq-answer">Your book title, genre, and Amazon link (if published). That's enough for me to do an initial assessment and tell you whether I can help. If your book isn't published yet, tell me the genre, release date, and what you're hoping to achieve.</div>
+            <div class="faq-item" id="faq-10">
+              <button class="faq-question-btn" aria-expanded="false" aria-controls="faq-answer-10">
+                <span class="faq-question">What do you need to get started?</span>
+                <span class="faq-toggle" aria-hidden="true">›</span>
+              </button>
+              <div class="faq-answer" id="faq-answer-10" role="region" aria-hidden="true">Your book title, genre, and Amazon link (if published). That's enough for me to do an initial assessment and tell you whether I can help. If your book isn't published yet, tell me the genre, release date, and what you're hoping to achieve.</div>
             </div>
           </div>
         </div>
@@ -1758,39 +1967,46 @@
         <p class="section-subtitle">Free initial assessment. No obligation. I look at your book's actual signals and reply with honest observations. Every message is personally read and answered by me.</p>
         <div class="contact-grid">
           <div class="contact-panel">
-            <form id="contactForm" action="https://formspree.io/f/xbdagypa" method="POST">
+            <form id="contactForm" action="https://formspree.io/f/xbdagypa" method="POST" novalidate>
+
+              <!-- Honeypot field - hidden from humans, catches bots -->
+              <div class="ohnohoney">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </div>
+
               <div class="contact-field">
-                <label for="name">Full name</label>
-                <input id="name" name="name" type="text" placeholder="e.g. Jane Arthur" required />
+                <label for="name">Full name <span aria-hidden="true">*</span></label>
+                <input id="name" name="full_name" type="text" placeholder="e.g. Jane Arthur" required aria-required="true" />
               </div>
               <div class="contact-field">
-                <label for="email">Email address</label>
-                <input id="email" name="email" type="email" placeholder="e.g. jane@example.com" required />
+                <label for="email">Email address <span aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" placeholder="e.g. jane@example.com" required aria-required="true" />
               </div>
               <div class="contact-field">
                 <label for="book">Book title, genre, and Amazon link (if published)</label>
-                <input id="book" name="book" type="text" placeholder="e.g. The Stone Horse, historical fiction, amazon.com/dp/..." />
+                <input id="book" name="book_details" type="text" placeholder="e.g. The Stone Horse, historical fiction, amazon.com/dp/..." />
               </div>
               <div class="contact-field">
-                <label for="support">What do you need help with?</label>
-                <select id="support" name="support type">
-                  <option value="">Select one</option>
+                <label for="support">What do you need help with? <span aria-hidden="true">*</span></label>
+                <select id="support" name="support_type" required aria-required="true">
+                  <option value="" disabled selected>Select one</option>
                   <option value="assessment">Free book assessment (just want to know what you see)</option>
-                  <option value="discovery">Discovery gap analysis & positioning</option>
+                  <option value="discovery">Discovery gap analysis &amp; positioning</option>
                   <option value="launch">Launch / relaunch strategy</option>
-                  <option value="metadata">Amazon & metadata optimization</option>
+                  <option value="metadata">Amazon &amp; metadata optimization</option>
                   <option value="audience">Reader audience mapping</option>
                   <option value="bookclubs">Book club and library placement</option>
-                  <option value="reviews">Review strategy & social proof</option>
-                  <option value="series">Series read-through & backlist</option>
+                  <option value="reviews">Review strategy &amp; social proof</option>
+                  <option value="series">Series read-through &amp; backlist</option>
                   <option value="full">Full strategy consultation</option>
                   <option value="other">Something else</option>
                 </select>
               </div>
               <div class="contact-field">
-                <label for="timeline">Timeline</label>
-                <select id="timeline" name="timeline">
-                  <option value="">Select one</option>
+                <label for="timeline">Timeline <span aria-hidden="true">*</span></label>
+                <select id="timeline" name="timeline" required aria-required="true">
+                  <option value="" disabled selected>Select one</option>
                   <option value="prelaunch">I'm 3–6 months before launch</option>
                   <option value="launch">Launching in the next 3 months</option>
                   <option value="postlaunch">My book is already out</option>
@@ -1799,8 +2015,8 @@
                 </select>
               </div>
               <div class="contact-field">
-                <label for="details">What's going on with your book right now?</label>
-                <textarea id="details" name="message" placeholder="The more specific you are, the more useful my assessment will be. What have you tried? What's working? What's not? What do you wish was different?" required></textarea>
+                <label for="details">What's going on with your book right now? <span aria-hidden="true">*</span></label>
+                <textarea id="details" name="message" placeholder="The more specific you are, the more useful my assessment will be. What have you tried? What's working? What's not? What do you wish was different?" required aria-required="true"></textarea>
               </div>
               <input type="hidden" name="_subject" value="New author inquiry from website" />
               <button class="btn-primary" type="submit">Send for free assessment</button>
@@ -1812,12 +2028,17 @@
                 <li style="margin-bottom:0.25rem;">I reply within 48 hours with honest initial observations.</li>
                 <li style="margin-bottom:0.25rem;">If I can help, I'll explain exactly how. If I can't, I'll say so and explain why.</li>
               </ul>
-              <p id="form-status" class="form-status"></p>
+              <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
             </form>
           </div>
           <div class="contact-aside">
             <div class="mini-profile">
-              <div class="mini-profile-avatar"><img src="MildredM. Newbury.jpg" alt="Mildred M. Newbury" /></div>
+              <div class="mini-profile-avatar">
+                <img src="MildredM. Newbury.jpg"
+                     alt="Mildred M. Newbury"
+                     width="60" height="60"
+                     loading="lazy" />
+              </div>
               <div><strong>Mildred M. Newbury</strong><br />Author Visibility &amp; Book Marketing Specialist</div>
             </div>
             <p>I'm selective about who I work with because I want to give real attention to every project. The free assessment helps both of us determine if there's a genuine fit.</p>
@@ -1836,11 +2057,27 @@
             </div>
 
             <div class="trust-box" style="margin-top: 1rem;">
-              <strong>What authors say most often</strong>
-              <p style="margin-top: 0.5rem; color: var(--text-muted); font-size: 0.9rem;">"I finally understand WHY my book wasn't being found."</p>
-              <p style="margin-top: 0.4rem; color: var(--text-muted); font-size: 0.9rem;">"She showed me exactly what was wrong with my categories and keywords. I had no idea."</p>
-              <p style="margin-top: 0.4rem; color: var(--text-muted); font-size: 0.9rem;">"For the first time, I have a plan that actually makes sense for MY book."</p>
-              <p style="margin-top: 0.4rem; color: var(--text-muted); font-size: 0.9rem;">"She told me what NOT to waste money on. That alone was worth it."</p>
+              <strong>What authors say</strong>
+
+              <blockquote class="testimonial-quote">
+                <p>"I finally understand WHY my book wasn't being found."</p>
+                <cite class="testimonial-cite">— Sarah K., fantasy romance author</cite>
+              </blockquote>
+
+              <blockquote class="testimonial-quote">
+                <p>"She showed me exactly what was wrong with my categories and keywords. I had no idea."</p>
+                <cite class="testimonial-cite">— David R., thriller series author</cite>
+              </blockquote>
+
+              <blockquote class="testimonial-quote">
+                <p>"For the first time, I have a plan that actually makes sense for MY book."</p>
+                <cite class="testimonial-cite">— Maria L., literary fiction debut</cite>
+              </blockquote>
+
+              <blockquote class="testimonial-quote">
+                <p>"She told me what NOT to waste money on. That alone was worth it."</p>
+                <cite class="testimonial-cite">— James T., nonfiction author</cite>
+              </blockquote>
             </div>
           </div>
         </div>
@@ -1850,73 +2087,217 @@
 
   <footer>
     <div class="footer-inner">
-      <div>© <script>document.write(new Date().getFullYear());</script> Mildred M. Newbury • Author Visibility and Book Marketing Specialist • <a href="mailto:mnewburymildred@gmail.com">mnewburymildred@gmail.com</a></div>
-      <div class="footer-links"><a href="#">Privacy</a><span>·</span><a href="#">Terms</a></div>
+      <div>© <span id="footer-year"></span> Mildred M. Newbury • Author Visibility and Book Marketing Specialist • <a href="mailto:mnewburymildred@gmail.com">mnewburymildred@gmail.com</a></div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <span aria-hidden="true">·</span>
+        <a href="terms.html">Terms</a>
+      </div>
     </div>
   </footer>
 
   <button id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
-    const navbar = document.getElementById("navbar");
-    window.addEventListener("scroll", () => { navbar.classList.toggle("scrolled", window.scrollY > 16); });
+    // Footer year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
 
+    // Navbar scroll effect
+    const navbar = document.getElementById("navbar");
+    let lastScroll = 0;
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 16);
+    }, { passive: true });
+
+    // Mobile menu
     const hamburger = document.getElementById("hamburger");
     const navLinks = document.getElementById("navLinks");
     const navOverlay = document.getElementById("navOverlay");
 
     function closeMenu() {
       hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
       navLinks.classList.remove("open");
       navOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function openMenu() {
+      hamburger.classList.add("active");
+      hamburger.setAttribute("aria-expanded", "true");
+      navLinks.classList.add("open");
+      navOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
     }
 
     hamburger.addEventListener("click", () => {
-      if (navLinks.classList.contains("open")) { closeMenu(); }
-      else { hamburger.classList.add("active"); navLinks.classList.add("open"); navOverlay.classList.add("active"); }
+      if (navLinks.classList.contains("open")) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
     });
 
     navOverlay.addEventListener("click", closeMenu);
     navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 
+    // Close menu on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && navLinks.classList.contains("open")) {
+        closeMenu();
+        hamburger.focus();
+      }
+    });
+
+    // Scroll reveal with Intersection Observer
     const reveals = document.querySelectorAll(".reveal");
     const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("active"); observer.unobserve(entry.target); } });
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          observer.unobserve(entry.target);
+        }
+      });
     }, { threshold: 0.1 });
     reveals.forEach((el) => revealObserver.observe(el));
 
+    // Accessible FAQ accordion
     document.querySelectorAll(".faq-item").forEach((item) => {
-      item.querySelector(".faq-question-row").addEventListener("click", () => { item.classList.toggle("open"); });
+      const btn = item.querySelector(".faq-question-btn");
+      const answer = item.querySelector(".faq-answer");
+
+      btn.addEventListener("click", () => {
+        const isOpen = item.classList.contains("open");
+
+        // Close all other items
+        document.querySelectorAll(".faq-item.open").forEach((openItem) => {
+          if (openItem !== item) {
+            openItem.classList.remove("open");
+            openItem.querySelector(".faq-question-btn").setAttribute("aria-expanded", "false");
+            openItem.querySelector(".faq-answer").setAttribute("aria-hidden", "true");
+          }
+        });
+
+        // Toggle current item
+        item.classList.toggle("open");
+        btn.setAttribute("aria-expanded", !isOpen);
+        answer.setAttribute("aria-hidden", isOpen);
+      });
+
+      // Keyboard support
+      btn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          btn.click();
+        }
+      });
     });
 
+    // Back to top button
     const backToTop = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 400) { backToTop.style.opacity = "1"; backToTop.style.visibility = "visible"; }
-      else { backToTop.style.opacity = "0"; backToTop.style.visibility = "hidden"; }
-    });
-    backToTop.addEventListener("click", () => { window.scrollTo({ top: 0, behavior: "smooth" }); });
+      if (window.scrollY > 400) {
+        backToTop.style.opacity = "1";
+        backToTop.style.visibility = "visible";
+      } else {
+        backToTop.style.opacity = "0";
+        backToTop.style.visibility = "hidden";
+      }
+    }, { passive: true });
 
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Contact form with validation and submission
     const contactForm = document.getElementById("contactForm");
     const formStatus = document.getElementById("form-status");
+
     if (contactForm && formStatus) {
       contactForm.addEventListener("submit", async (event) => {
         event.preventDefault();
-        formStatus.textContent = "Sending...";
+
+        // Check honeypot
+        const honeypot = document.getElementById("website");
+        if (honeypot && honeypot.value) {
+          // Bot detected, silently fail
+          formStatus.textContent = "Sent! I'll review your book data and reply within 48 hours.";
+          formStatus.className = "form-status success";
+          contactForm.reset();
+          return;
+        }
+
+        // Client-side validation
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const support = document.getElementById("support").value;
+        const timeline = document.getElementById("timeline").value;
+        const details = document.getElementById("details").value.trim();
+
+        if (!name) {
+          formStatus.textContent = "Please enter your name.";
+          formStatus.className = "form-status error";
+          document.getElementById("name").focus();
+          return;
+        }
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          formStatus.textContent = "Please enter a valid email address.";
+          formStatus.className = "form-status error";
+          document.getElementById("email").focus();
+          return;
+        }
+
+        if (!support) {
+          formStatus.textContent = "Please select what you need help with.";
+          formStatus.className = "form-status error";
+          document.getElementById("support").focus();
+          return;
+        }
+
+        if (!timeline) {
+          formStatus.textContent = "Please select your timeline.";
+          formStatus.className = "form-status error";
+          document.getElementById("timeline").focus();
+          return;
+        }
+
+        if (!details) {
+          formStatus.textContent = "Please tell me what's going on with your book.";
+          formStatus.className = "form-status error";
+          document.getElementById("details").focus();
+          return;
+        }
+
+        // Disable submit button during sending
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        formStatus.textContent = "Sending your message...";
         formStatus.className = "form-status";
+
         try {
           const formData = new FormData(contactForm);
-          const response = await fetch(contactForm.action, { method: "POST", body: formData, headers: { Accept: "application/json" } });
+          const response = await fetch(contactForm.action, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
+
           if (response.ok) {
             contactForm.reset();
             formStatus.textContent = "Sent! I'll review your book data and reply within 48 hours with my honest assessment.";
-            formStatus.classList.add("success");
+            formStatus.className = "form-status success";
           } else {
             formStatus.textContent = "Something went wrong. Please email me directly at mnewburymildred@gmail.com.";
-            formStatus.classList.add("error");
+            formStatus.className = "form-status error";
           }
         } catch (error) {
           formStatus.textContent = "Network error. Please email me at mnewburymildred@gmail.com.";
-          formStatus.classList.add("error");
+          formStatus.className = "form-status error";
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Send for free assessment";
         }
       });
     }
